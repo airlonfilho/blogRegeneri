@@ -3,7 +3,7 @@ const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const app = express()
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 21097;
 
 const authRoute = require('./routes/Auth')
 const postRoute = require('./routes/Post')
