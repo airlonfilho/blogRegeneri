@@ -11,7 +11,7 @@ const healthRoute = require('./routes/Health')
 
 dotenv.config();
 
-mongoose.connect('mongodb://institutoregeneri1:rege5254@cmongodb.institutoregeneri.com.br:27017/?retryWrites=true&w=majority').then(console.log('CONNECTED TO DATABASE')
+mongoose.connect('mongodb://institutoregeneri1:rege5254@mongodb.institutoregeneri.com.br:27017/?retryWrites=true&w=majority').then(console.log('CONNECTED TO DATABASE')
 ).catch((err) => console.log(err));
 
 app.use(express.json())
