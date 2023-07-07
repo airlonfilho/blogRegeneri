@@ -11,7 +11,7 @@ const healthRoute = require('./routes/Health')
 
 dotenv.config();
 
-mongoose.connect(process.env.MONGO_URI).then(console.log('CONNECTED TO DATABASE')
+mongoose.connect('mongodb+srv://filhoairlon:bIDkwp5g@cluster0.3wvnoap.mongodb.net/?retryWrites=true&w=majority').then(console.log('CONNECTED TO DATABASE')
 ).catch((err) => console.log(err));
 
 
