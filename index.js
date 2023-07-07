@@ -14,27 +14,20 @@ dotenv.config();
 mongoose.connect('mongodb://institutoregeneri1:rege5254@mongodb.institutoregeneri.com.br:27017/?retryWrites=true&w=majority').then(console.log('CONNECTED TO DATABASE')
 ).catch((err) => console.log(err));
 
+
 app.use(express.json())
+
+var allowCrossDomain = function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', "*");
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+}
+app.use(allowCrossDomain);
+
 app.use('/api/blog', authRoute);
 app.use('/api/blog/posts', postRoute);
 app.use('/', healthRoute);
 app.use('/uploads', express.static('uploads'));
-
-const corsOptions ={
-    origin:'http://adminblog.institutoregeneri.com.br/', 
-    credentials:true,            //access-control-allow-credentials:true
-    optionSuccessStatus:200
-}
-app.use(cors(corsOptions));
-
-app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "http://adminblog.institutoregeneri.com.br");
-    res.setHeader("Access-Control-Allow-Methods", "*")
-    res.header(
-      "Access-Control-Allow-Headers",
-      "Origin, X-Requested-With, Content-Type, Accept"
-    );
-    next();
-  });
 
 app.listen(PORT, () => console.log('Listening on: ', PORT))
